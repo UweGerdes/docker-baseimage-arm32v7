@@ -26,6 +26,7 @@ RUN if [ -n "${APT_PROXY}" ] ; then \
 				net-tools \
 				ssh \
 				sudo \
+				tzdata \
 				unzip \
 				vim \
 				wget && \
