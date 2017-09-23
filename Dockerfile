@@ -1,6 +1,6 @@
-# base image for arm architecture (Raspberry Pi) with some essentials, and optional timezone and apt proxy cache (build arg)
+# base image for arm architecture (Raspberry Pi 3) with some essentials, and optional timezone and apt proxy cache (build arg)
 
-FROM armhf/ubuntu
+FROM arm32v7/ubuntu
 MAINTAINER entwicklung@uwegerdes.de
 
 ARG APT_PROXY
@@ -9,9 +9,9 @@ ARG TZ=UTC
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ ${TZ}
 
-RUN if [ -n "${APT_PROXY}" ]; then \
-		echo "Acquire::http { Proxy \"${APT_PROXY}\"; };" >> /etc/apt/apt.conf.d/01proxy; \
-		echo "Acquire::https { Proxy \"https://\"; };" >> /etc/apt/apt.conf.d/01proxy; \
+RUN if [ -n "${APT_PROXY}" ] ; then \
+		echo "Acquire::http { Proxy \"${APT_PROXY}\"; };" >> /etc/apt/apt.conf.d/01proxy ; \
+		echo "Acquire::https { Proxy \"https://\"; };" >> /etc/apt/apt.conf.d/01proxy ; \
 	fi
 
 RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends && \
@@ -34,3 +34,4 @@ RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends && \
 	rm -rf /var/lib/apt/lists/*
 
 CMD [ "/bin/bash" ]
+
