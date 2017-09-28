@@ -4,10 +4,11 @@ FROM arm32v7/ubuntu
 MAINTAINER entwicklung@uwegerdes.de
 
 ARG APT_PROXY
+ARG TERM=xterm
 ARG TZ=UTC
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV TERM=xterm
+ENV TERM=${TERM}
 ENV TZ ${TZ}
 
 RUN if [ -n "${APT_PROXY}" ] ; then \
@@ -19,6 +20,7 @@ RUN if [ -n "${APT_PROXY}" ] ; then \
 	apt-get update && \
 	apt-get dist-upgrade -y && \
 	apt-get install -y \
+				apt-utils \
 				bzip2 \
 				ca-certificates \
 				curl \
