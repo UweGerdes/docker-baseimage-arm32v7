@@ -7,6 +7,7 @@ ARG APT_PROXY
 ARG TZ=UTC
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV TERM=xterm
 ENV TZ ${TZ}
 
 RUN if [ -n "${APT_PROXY}" ] ; then \
