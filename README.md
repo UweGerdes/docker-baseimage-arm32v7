@@ -4,6 +4,15 @@ A common base image for my Dockerfiles on Raspberry Pi 3 with Raspbian for my do
 
 The base for this image is arm32v7/ubuntu but it might change in the future. For others architectures (arm64v8, arm32v6 and arm32v5) there are images too - replace it in the `Dockerfile` before build. Check `uname -m` for a hint - the standard Raspbian for Pi 3 is 32 bit.
 
+## Installing Docker
+
+Install Docker with:
+
+```bash
+curl -sSL https://get.docker.com | sh
+sudo adduser pi docker
+```
+
 ## Building with settings
 
 If you want to build it with other settings load the Dockerfile in an empty directory, perhaps edit it to your needs.
