@@ -24,7 +24,8 @@ There is also a timezone parameter TZ. The terminal type is sent to the build co
 Build the image with (you might change/omit the build-args, mind the dot in the last line):
 
 ```bash
-$ docker build -t uwegerdes/baseimage \
+$ docker build -t uwegerdes/baseimage-arm32v7 \
+	-t uwegerdes/baseimage \
 	--build-arg APT_PROXY="http://192.168.1.18:3142" \
 	--build-arg TZ="Europe/Berlin" \
 	--build-arg TERM="${TERM}" \
