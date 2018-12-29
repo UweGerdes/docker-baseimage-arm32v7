@@ -1,6 +1,7 @@
 # base image for arm architecture (Raspberry Pi 3) with some essentials, and optional timezone and apt proxy cache (build arg)
 
-FROM arm32v7/ubuntu
+ARG BASEIMAGE_VERSION=latest
+FROM arm32v7/ubuntu:${BASEIMAGE_VERSION}
 MAINTAINER entwicklung@uwegerdes.de
 
 ARG APT_PROXY
@@ -25,7 +26,6 @@ RUN if [ -n "${APT_PROXY}" ] ; then \
 				ca-certificates \
 				curl \
 				git \
-				gosu \
 				net-tools \
 				ssh \
 				sudo \
@@ -37,4 +37,3 @@ RUN if [ -n "${APT_PROXY}" ] ; then \
 	rm -rf /var/lib/apt/lists/*
 
 CMD [ "/bin/bash" ]
-
